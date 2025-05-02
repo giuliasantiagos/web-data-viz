@@ -150,6 +150,50 @@
       }
     }
 
+        // Verificando se o nome possui mais de uma letra:
+        if(nomeVar.length <= 1){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para nome inválido.)";
+        finalizarAguardar();
+        return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Verificando se o CPF é válido:
+    if(cpfVar.length != 11){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para CPF inválido.)";
+        finalizarAguardar();
+        return false;
+    }else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Verificando se o email é válido:
+    if(!emailVar.includes('@') || !emailVar.includes('.')){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para email inválido.)";
+        finalizarAguardar();
+        return false;
+    }else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Verificando se a senha é válida:
+    if(senhaVar.length < 6 || confirmacaoSenhaVar !== senhaVar){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para senha inválida ou incorreta.)";
+        finalizarAguardar();
+        return false;
+    }else {
+      setInterval(sumirMensagem, 5000);
+    }
+
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
